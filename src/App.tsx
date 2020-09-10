@@ -12,7 +12,7 @@ import MoviePage from "./components/pages/movie-page"
 
 
 import axios from "axios"
-import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Link, Switch, Route, BrowserRouter as Router ,Redirect } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
 
 // jsx element
@@ -33,11 +33,19 @@ function App() {
         <div className="container">
             <NavBarApp />
             <Switch>
+
                 <RoutesConfiguration routes={Routes} />
-            </Switch>
+                            
+                       
+            </Switch> 
         </div>
     </Router>
 }
+
+function PageNotFound(){
+    return <div>Page Not Found</div>
+}
+
 
 interface IRoute {
     component: any,

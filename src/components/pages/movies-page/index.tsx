@@ -32,7 +32,7 @@ function MoviesPageInternal() {
     async function getMoviesApi(searchValue: string = "" ,pageNumber:number) {
         setLoader(true)
         try {
-            history.push(`/page/${searchMovieApi.searchMovie}/${pageNumber}`)
+            history.push(`/page/${searchValue}/${pageNumber}`)
             const moviesUrl = `http://www.omdbapi.com/?s=${searchValue}&apikey=4f7462e2&page=${pageNumber}`
             const { data } = await axios.get(moviesUrl);
             if (data.Response === "False") throw Error("No Data From Api")
@@ -93,9 +93,11 @@ function MoviesPageInternal() {
         }
     }
     function filterOperationApi(value: string) {
-        getMoviesApi(value,1)
-        setMoviePage({page:1})
+        
         setSearchMovieApi({searchMovie: value})
+        setMoviePage({page:1})
+        getMoviesApi(value,1)
+        
     }
 
     function filterOperation(value: string) {
